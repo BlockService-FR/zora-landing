@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "L'heure du Conte est Magique !",
+    "subtitle": "Rejoignez-nous pour des aventures magiques ! 🌈"
+  },
+  "features": {
+    "magicStories": {
+      "title": "Histoires Magiques",
+      "description": "De nouvelles aventures chaque jour !"
+    },
+    "manyLanguages": {
+      "title": "Plusieurs Langues",
+      "description": "Apprenez en vous amusant !"
+    },
+    "yourStory": {
+      "title": "Votre Histoire",
+      "description": "Vous êtes le héros !"
+    }
+  },
+  "countdown": {
+    "comingSoon": "Bientôt !",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes"
+  },
+  "form": {
+    "emailPlaceholder": "Votre email pour des mises à jour magiques ! ✨",
+    "consent": "Oui, je veux rejoindre l'aventure magique ! 🌟",
+    "submit": "Commencez la Magie ! ✨",
+    "success": "Hourra ! Préparez-vous pour l'aventure ! 🎉"
+  }
+}

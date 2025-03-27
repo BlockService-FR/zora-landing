@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "¡La Hora del Cuento es Divertida!",
+    "subtitle": "¡Únete a nuestras aventuras mágicas! 🌈"
+  },
+  "features": {
+    "magicStories": {
+      "title": "Historias Mágicas",
+      "description": "¡Nuevas aventuras cada día!"
+    },
+    "manyLanguages": {
+      "title": "Varios Idiomas",
+      "description": "¡Aprende mientras te diviertes!"
+    },
+    "yourStory": {
+      "title": "Tu Historia",
+      "description": "¡Tú eres el héroe!"
+    }
+  },
+  "countdown": {
+    "comingSoon": "¡Muy Pronto!",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos"
+  },
+  "form": {
+    "emailPlaceholder": "¡Tu email para actualizaciones mágicas! ✨",
+    "consent": "¡Sí, quiero unirme a la aventura mágica! 🌟",
+    "submit": "¡Comienza la Magia! ✨",
+    "success": "¡Hurra! ¡Prepárate para la aventura! 🎉"
+  }
+}

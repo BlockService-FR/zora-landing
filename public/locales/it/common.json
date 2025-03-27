@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "L'Ora della Storia è Divertente!",
+    "subtitle": "Unisciti a noi per avventure magiche! 🌈"
+  },
+  "features": {
+    "magicStories": {
+      "title": "Storie Magiche",
+      "description": "Nuove avventure ogni giorno!"
+    },
+    "manyLanguages": {
+      "title": "Tante Lingue",
+      "description": "Impara divertendoti!"
+    },
+    "yourStory": {
+      "title": "La Tua Storia",
+      "description": "Tu sei l'eroe!"
+    }
+  },
+  "countdown": {
+    "comingSoon": "Prossimamente!",
+    "days": "Giorni",
+    "hours": "Ore",
+    "minutes": "Minuti",
+    "seconds": "Secondi"
+  },
+  "form": {
+    "emailPlaceholder": "La tua email per aggiornamenti magici! ✨",
+    "consent": "Sì, voglio unirmi all'avventura magica! 🌟",
+    "submit": "Inizia la Magia! ✨",
+    "success": "Evviva! Preparati per l'avventura! 🎉"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "Story Time is Fun Time!",
+    "subtitle": "Join us on magical adventures! 🌈"
+  },
+  "features": {
+    "magicStories": {
+      "title": "Magic Stories",
+      "description": "New adventures every day!"
+    },
+    "manyLanguages": {
+      "title": "Many Languages",
+      "description": "Learn while having fun!"
+    },
+    "yourStory": {
+      "title": "Your Story",
+      "description": "You're the hero!"
+    }
+  },
+  "countdown": {
+    "comingSoon": "Coming Soon",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "form": {
+    "emailPlaceholder": "Your email for magical updates! ✨",
+    "consent": "Yes, I want to join the magical adventure! 🌟",
+    "submit": "Start the Magic! ✨",
+    "success": "Hooray! Get ready for the adventure! 🎉"
+  }
+}

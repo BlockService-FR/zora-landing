@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-float-optimized {
+    animation: floatOptimized 6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-pulse-optimized {
+    animation: pulseOptimized 2s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .animate-sparkle-optimized {
+    animation: sparkleOptimized 1.5s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-slower {
+    animation: pulseSlow 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-text {
+    animation: pulseText 3s ease-in-out infinite;
+  }
+
+  .shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes floatOptimized {
+  0%, 100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-15px) translateZ(0);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-5px) translateZ(0);
+  }
+}
+
+@keyframes pulseOptimized {
+  0%, 100% {
+    transform: scale(1) translateZ(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05) translateZ(0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes sparkleOptimized {
+  0%, 100% {
+    transform: scale(0.8) rotate(0deg) translateZ(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg) translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulseText {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+  font-display: swap;
+}
+
+/* Optimize animations with hardware acceleration */
+* {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce animation complexity for mobile devices */
+@media (max-width: 768px) {
+  .animate-float-optimized {
+    animation-duration: 4s;
+  }
+
+  .animate-sparkle-optimized {
+    animation-duration: 2s;
+  }
+}
