@@ -17,13 +17,7 @@ interface Language {
 function App() {
   const { t, i18n } = useTranslation();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>({
-    code: 'en',
-    name: 'English',
-    flag: '🇬🇧',
-    dir: 'ltr'
-  });
-
+  
   const languages: Language[] = [
     { code: 'en', name: 'English', flag: '🇬🇧', dir: 'ltr' },
     { code: 'fr', name: 'Français', flag: '🇫🇷', dir: 'ltr' },
@@ -31,6 +25,11 @@ function App() {
     { code: 'es', name: 'Español', flag: '🇪🇸', dir: 'ltr' },
     { code: 'ar', name: 'العربية', flag: '🇸🇦', dir: 'rtl' }
   ];
+
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>(() => {
+    const currentLang = i18n.language;
+    return languages.find(lang => lang.code === currentLang) || languages[0];
+  });
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('selectedLanguage');

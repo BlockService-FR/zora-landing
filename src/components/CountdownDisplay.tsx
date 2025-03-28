@@ -15,11 +15,18 @@ export const CountdownDisplay: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setLetterIndex((prev) => (prev + 1) % text.length);
+      setLetterIndex((prev) => {
+        let nextIndex = (prev + 1) % text.length;
+        // Skip spaces and find the next non-space character
+        while (text[nextIndex] === ' ' && nextIndex < text.length) {
+          nextIndex = (nextIndex + 1) % text.length;
+        }
+        return nextIndex;
+      });
     }, 700);
 
     return () => clearInterval(interval);
-  }, [text.length]);
+  }, [text]);
 
   // Reset letter index when language changes
   useEffect(() => {
@@ -27,7 +34,7 @@ export const CountdownDisplay: React.FC = () => {
   }, [i18n.language]);
 
   return (
-    <section className="relative py-16 px-4 overflow-hidden bg-gradient-to-b from-white/50 to-purple-50/50">
+    <section className="relative py-8 md:py-16 px-2 md:px-4 overflow-hidden">
       <div className="max-w-4xl mx-auto">
         <div className="relative">
           {/* Background stars */}
@@ -42,29 +49,29 @@ export const CountdownDisplay: React.FC = () => {
                   animationDelay: `${Math.random() * 2}s`,
                 }}
               >
-                <div className="w-2 h-2 bg-yellow-200 rounded-full" />
+                <div className="w-1.5 md:w-2 h-1.5 md:h-2 bg-yellow-200 rounded-full" />
               </div>
             ))}
           </div>
 
           {/* Main countdown display */}
-          <div className="relative bg-white/90 backdrop-blur-md rounded-3xl p-12 shadow-2xl border-4 border-purple-200">
-            <div className="flex justify-center items-center gap-3 min-h-[160px]">
+          <div className="relative bg-white/90 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 md:p-12 shadow-2xl border-2 md:border-4 border-purple-200">
+            <div className="flex flex-wrap justify-center items-center gap-1 md:gap-3 min-h-[80px] md:min-h-[160px]">
               {text.split('').map((letter, index) => (
                 <div
                   key={index}
                   className={`
                     relative transform transition-all duration-300
-                    ${index === letterIndex ? 'scale-125' : 'scale-100'}
+                    ${index === letterIndex ? 'scale-110 md:scale-125' : 'scale-100'}
                   `}
                 >
                   <span
                     className={`
-                      text-5xl md:text-6xl font-bold inline-flex items-center justify-center
-                      min-w-[1ch] min-h-[1.5em] leading-[1.5]
+                      text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold inline-flex items-center justify-center
+                      min-w-[0.5ch] md:min-w-[1ch] min-h-[1.5em] leading-[1.5]
                       bg-gradient-to-r ${colors[index % colors.length]}
                       bg-clip-text text-transparent
-                      ${index === letterIndex ? 'animate-letter-pop' : ''}
+                      ${index === letterIndex && letter !== ' ' ? 'animate-letter-pop' : ''}
                     `}
                     style={{
                       animationDelay: `${index * 0.1}s`,
@@ -72,15 +79,14 @@ export const CountdownDisplay: React.FC = () => {
                   >
                     {letter}
                   </span>
-                  {index === letterIndex && (
-                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 animate-float">
-                      <div className="text-3xl">⭐</div>
+                  {index === letterIndex && letter !== ' ' && (
+                    <div className="absolute -top-4 md:-top-8 left-1/2 transform -translate-x-1/2 animate-float">
+                      <div className="text-xl md:text-3xl">⭐</div>
                     </div>
                   )}
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </div>
