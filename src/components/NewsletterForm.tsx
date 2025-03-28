@@ -2,8 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import { supabase, RATE_LIMIT_WINDOW, MAX_SUBMISSIONS_PER_WINDOW } from '../lib/supabase';
-import { FunctionsHttpError, FunctionsRelayError, FunctionsFetchError } from "@supabase/supabase-js";
 import { Loader2 } from 'lucide-react';
 
 const emailSchema = z.string().email('Invalid email format');
@@ -32,30 +30,34 @@ export const NewsletterForm: React.FC = () => {
       emailSchema.parse(email);
 
       // Verify reCAPTCHA
-      // if (!executeRecaptcha) {
-      //   throw new Error('reCAPTCHA not initialized');
-      // }
-      // const token = await executeRecaptcha('newsletter_signup');
-
-      // if (!token) {
-      //   throw new Error('Failed to verify reCAPTCHA');
-      // }
-
+      if (!executeRecaptcha) {
+        throw new Error('reCAPTCHA not initialized');
+      }
       
+      const recaptchaToken = await executeRecaptcha('newsletter_signup');
+      if (!recaptchaToken) {
+        throw new Error('Failed to verify reCAPTCHA');
+      }
 
-const { data, error } = await supabase.functions.invoke('register-newsletter', {
-  body: { 'email': email, 'recaptchaToken': 'test' },
-  method: 'POST'
-});
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/register-newsletter`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify({
+            email,
+            recaptchaToken,
+          }),
+        }
+      );
 
-if (error instanceof FunctionsHttpError) {
-  const errorMessage = await error.context.json()
-  console.log('Function returned an error', errorMessage)
-} else if (error instanceof FunctionsRelayError) {
-  console.log('Relay error:', error.message)
-} else if (error instanceof FunctionsFetchError) {
-  console.log('Fetch error:', error.message)
-}
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to subscribe');
+      }
 
       setSuccess(true);
       setEmail('');
