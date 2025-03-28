@@ -29,5 +29,87 @@
     "consent": "¡Sí, quiero unirme a la aventura mágica! 🌟",
     "submit": "¡Comienza la Magia! ✨",
     "success": "¡Hurra! ¡Prepárate para la aventura! 🎉"
+  },
+  "footer": {
+    "about": "Sobre Zora",
+    "description": "Zora Stories trae aventuras mágicas a niños de todo el mundo a través de la narración interactiva.",
+    "legal": "Legal",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "contact": "Contacto",
+    "email": "Email",
+    "rights": "Todos los derechos reservados."
+  },
+  "common": {
+    "backHome": "Volver al Inicio"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización",
+    "collection": {
+      "title": "Información que Recopilamos",
+      "description": "Recopilamos y procesamos la siguiente información:",
+      "email": "Dirección de email para suscripción al boletín",
+      "usage": "Datos de uso para mejorar nuestro servicio",
+      "cookies": "Preferencias y configuración de cookies"
+    },
+    "use": {
+      "title": "Cómo Usamos tu Información",
+      "description": "Tu información nos ayuda a proporcionar y mejorar nuestros servicios:",
+      "newsletter": "Enviarte nuestro boletín mágico",
+      "improve": "Mejorar nuestras historias y características",
+      "legal": "Cumplir con obligaciones legales"
+    },
+    "cookies": {
+      "title": "Cookies y Seguimiento",
+      "description": "Utilizamos cookies para mejorar tu experiencia y analizar el uso del sitio."
+    },
+    "rights": {
+      "title": "Tus Derechos",
+      "description": "Tienes varios derechos sobre tus datos personales:",
+      "access": "Derecho a acceder a tus datos",
+      "rectification": "Derecho a corregir tus datos",
+      "erasure": "Derecho a eliminar tus datos",
+      "portability": "Derecho a la portabilidad de datos"
+    },
+    "contact": {
+      "title": "Contáctanos",
+      "description": "Para consultas relacionadas con la privacidad, contacta a nuestro equipo:"
+    }
+  },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "lastUpdated": "Última actualización",
+    "agreement": {
+      "title": "Acuerdo de Términos",
+      "description": "Al acceder a nuestro servicio, aceptas estar sujeto a estos términos."
+    },
+    "obligations": {
+      "title": "Obligaciones del Usuario",
+      "appropriate": "Usar el servicio de manera apropiada y responsable",
+      "accurate": "Proporcionar información precisa",
+      "legal": "Cumplir con todas las leyes aplicables",
+      "security": "Mantener la seguridad de la cuenta"
+    },
+    "intellectual": {
+      "title": "Propiedad Intelectual",
+      "description": "Todo el contenido y materiales disponibles en Zora Stories están protegidos por derechos de propiedad intelectual."
+    },
+    "liability": {
+      "title": "Limitación de Responsabilidad",
+      "description": "Zora Stories no es responsable de daños indirectos, incidentales o consecuentes."
+    },
+    "termination": {
+      "title": "Terminación de Cuenta",
+      "description": "Nos reservamos el derecho de terminar o suspender el acceso a nuestro servicio por violaciones de estos términos."
+    },
+    "disputes": {
+      "title": "Resolución de Disputas",
+      "description": "Cualquier disputa se resolverá mediante arbitraje de acuerdo con las leyes aplicables."
+    },
+    "contact": {
+      "title": "Información de Contacto",
+      "description": "Para consultas legales, contacta a nuestro equipo legal:"
+    }
   }
 }

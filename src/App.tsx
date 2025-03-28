@@ -6,6 +6,9 @@ import { MouseTrail } from './components/MouseTrail';
 import { LanguageAnnouncement } from './components/LanguageAnnouncement';
 import { CountdownDisplay } from './components/CountdownDisplay';
 import { NewsletterForm } from './components/NewsletterForm';
+import { Footer } from './components/Footer';
+import { Privacy } from './pages/Privacy';
+import { Terms } from './pages/Terms';
 
 interface Language {
   code: string;
@@ -17,6 +20,7 @@ interface Language {
 function App() {
   const { t, i18n } = useTranslation();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState<string>(window.location.pathname);
   
   const languages: Language[] = [
     { code: 'en', name: 'English', flag: '🇬🇧', dir: 'ltr' },
@@ -30,6 +34,15 @@ function App() {
     const currentLang = i18n.language;
     return languages.find(lang => lang.code === currentLang) || languages[0];
   });
+
+  useEffect(() => {
+    const handleNavigation = () => {
+      setCurrentPage(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handleNavigation);
+    return () => window.removeEventListener('popstate', handleNavigation);
+  }, []);
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('selectedLanguage');
@@ -68,6 +81,65 @@ function App() {
       description: t('features.yourStory.description')
     }
   ];
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case '/privacy':
+        return <Privacy />;
+      case '/terms':
+        return <Terms />;
+      default:
+        return (
+          <>
+            <section className="relative pt-20 pb-12 px-4 text-center">
+              <LanguageAnnouncement />
+              
+              <div className="mt-12">
+                <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 mb-6 animate-bounce-gentle min-h-[160px]">
+                  {t('hero.title')}
+                </h1>
+                <p className="text-2xl md:text-3xl text-gray-700 max-w-2xl mx-auto mb-8">
+                  {t('hero.subtitle')}
+                </p>
+              </div>
+
+              <div className="relative w-full max-w-2xl mx-auto h-64 md:h-96 mb-12">
+                <img
+                  src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80"
+                  alt="Magical Book"
+                  className="rounded-3xl shadow-2xl object-cover w-full h-full animate-float-optimized"
+                />
+              </div>
+            </section>
+
+            <CountdownDisplay />
+            
+            <section className="py-16 px-4 bg-white/50 backdrop-blur-sm">
+              <div className="max-w-4xl mx-auto text-center">
+                <NewsletterForm />
+              </div>
+            </section>
+
+            <section className="py-16 px-4">
+              <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+                {features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <div className="mb-6 transform hover:rotate-12 transition-transform duration-300">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-4">{feature.title}</h3>
+                    <p className="text-xl text-gray-600">{feature.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </>
+        );
+    }
+  };
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}>
@@ -130,52 +202,8 @@ function App() {
           </div>
         </div>
 
-        {/* Hero Section */}
-        <section className="relative pt-20 pb-12 px-4 text-center">
-          <LanguageAnnouncement />
-          
-          <div className="mt-12">
-            <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 mb-6 animate-bounce-gentle min-h-[160px]">
-              {t('hero.title')}
-            </h1>
-            <p className="text-2xl md:text-3xl text-gray-700 max-w-2xl mx-auto mb-8">
-              {t('hero.subtitle')}
-            </p>
-          </div>
-
-          <div className="relative w-full max-w-2xl mx-auto h-64 md:h-96 mb-12">
-            <img
-              src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80"
-              alt="Magical Book"
-              className="rounded-3xl shadow-2xl object-cover w-full h-full animate-float-optimized"
-            />
-          </div>
-        </section>
-
-        <CountdownDisplay />
-        
-        <section className="py-16 px-4 bg-white/50 backdrop-blur-sm">
-          <div className="max-w-4xl mx-auto text-center">
-            <NewsletterForm />
-          </div>
-        </section>
-
-        <section className="py-16 px-4">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                <div className="mb-6 transform hover:rotate-12 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">{feature.title}</h3>
-                <p className="text-xl text-gray-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        {renderPage()}
+        <Footer />
       </div>
     </GoogleReCaptchaProvider>
   );
